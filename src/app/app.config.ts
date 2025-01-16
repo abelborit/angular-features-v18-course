@@ -8,6 +8,7 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 /* ApplicationConfig es una interfaz introducida en Angular 15 que define la configuración global de la aplicación. Reemplaza parcialmente el uso de NgModule para configurar proveedores, rutas y otros ajustes globales */
 export const appConfig: ApplicationConfig = {
@@ -27,7 +28,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
 
     /* Proporciona una alternativa experimental para la detección de cambios sin Zone.js. En lugar de interceptar tareas asincrónicas automáticamente (como hace Zone.js), Angular solo actualiza las vistas cuando el flujo de datos lo indica explícitamente. Es útil para aplicaciones que usan patrones reactivas como RxJS o librerías como NgRx. */
-    provideExperimentalZonelessChangeDetection(),
+    provideExperimentalZonelessChangeDetection(), provideAnimationsAsync(),
   ],
 };
 

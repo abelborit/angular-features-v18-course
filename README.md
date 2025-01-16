@@ -48,6 +48,7 @@
       ],
       ```
 
+- Angular Material: `npx ng add @angular/material@18`
 ---
 
 # AngularFeaturesV18
