@@ -5,10 +5,10 @@ import {
   provideExperimentalZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 /* ApplicationConfig es una interfaz introducida en Angular 15 que define la configuración global de la aplicación. Reemplaza parcialmente el uso de NgModule para configurar proveedores, rutas y otros ajustes globales */
 export const appConfig: ApplicationConfig = {
@@ -28,7 +28,16 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
 
     /* Proporciona una alternativa experimental para la detección de cambios sin Zone.js. En lugar de interceptar tareas asincrónicas automáticamente (como hace Zone.js), Angular solo actualiza las vistas cuando el flujo de datos lo indica explícitamente. Es útil para aplicaciones que usan patrones reactivas como RxJS o librerías como NgRx. */
-    provideExperimentalZonelessChangeDetection(), provideAnimationsAsync(),
+    provideExperimentalZonelessChangeDetection(),
+
+    /*  es una función introducida como una mejora en Angular para manejar animaciones de forma más eficiente. Está diseñada para trabajar con la librería de animaciones de Angular (@angular/animations) y permite cargar las animaciones de manera asíncrona, mejorando el rendimiento y reduciendo la carga inicial de la aplicación.
+      - Carga diferida: Permite que las animaciones se inicialicen solo cuando sean necesarias, evitando cargar recursos y configuraciones relacionados con animaciones al inicio de la aplicación.
+      - Optimización del rendimiento: Esto puede ser útil en aplicaciones grandes o cuando las animaciones no se utilizan en todas las partes de la aplicación.
+    */
+    provideAnimationsAsync(),
+
+    /* HttpClient se proporciona mediante la función auxiliar "provideHttpClient" que es una nueva funcionalidad introducida como parte de la modernización del manejo de solicitudes HTTP, permitiendo el uso de la API Fetch en lugar de depender de XMLHttpRequest (XHR). Entonces para usar fetch de forma predeterminada en lugar de XMLHttpRequest, se configura el "provideHttpClient" ya que acepta una lista de configuraciones de funciones opcionales para habilitar o configurar el comportamiento de diferentes aspectos del cliente. En este caso se usa "withFetch" y sirve para que el cliente use de forma predeterminada el fetch en lugar del XMLHttpRequest. */
+    provideHttpClient(withFetch()),
   ],
 };
 
