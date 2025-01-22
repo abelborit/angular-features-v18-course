@@ -1,2 +1,17 @@
+<!-- El ng-content es una directiva en Angular que permite proyectar contenido (texto, HTML u otros componentes) desde el componente padre hacia el componente hijo. Es especialmente útil para crear componentes reutilizables que aceptan contenido dinámico. Este concepto se conoce como Content Projection (proyección de contenido) -->
+
+<!-- ¿Por qué usar ng-content?
+- Flexibilidad en componentes reutilizables: Permite que los componentes hijos acepten contenido dinámico, haciendo que los componentes sean más adaptables.
+
+- Separación de responsabilidades: El componente hijo define la estructura básica, pero el contenido específico lo define el padre.
+
+- Soporte para diseño dinámico: Se puede usar para proyectar contenido condicionalmente en diferentes secciones. -->
+
+<!-- Diferencia con @Input
+- Aunque @Input y ng-content parecen hacer cosas similares (pasar datos de un padre a un hijo), tienen usos diferentes:
+
+- @Input: Pasa datos (como valores o configuraciones específicas) desde el padre hacia el hijo.
+
+- ng-content: Proyecta contenido (HTML, texto u otros componentes) directamente en la plantilla del hijo. -->
 <ng-content select=".saludo">Hola </ng-content>
 <ng-content>Usuario desconocido</ng-content>
