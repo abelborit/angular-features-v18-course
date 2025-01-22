@@ -6,6 +6,7 @@ import {
   QueriesComponent,
 } from './pages/signals';
 import { ModelInputsComponent } from './pages/signals/model-inputs/model-inputs.component';
+import { ContentComponent } from './pages/content/content.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,6 +32,8 @@ export const routes: Routes = [
       },
     ],
   },
+
+  { path: 'content', component: ContentComponent },
 
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
