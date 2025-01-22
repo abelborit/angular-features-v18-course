@@ -5,6 +5,7 @@ import {
   OutputComponent,
   QueriesComponent,
 } from './pages/signals';
+import { ModelInputsComponent } from './pages/signals/model-inputs/model-inputs.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +24,10 @@ export const routes: Routes = [
       {
         path: 'queries',
         component: QueriesComponent,
+      },
+      {
+        path: 'model-inputs',
+        component: ModelInputsComponent,
       },
     ],
   },
