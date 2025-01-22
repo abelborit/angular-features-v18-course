@@ -1,1 +1,19 @@
-<p>output works!</p>
+<div class="container d-flex justify-content-center mt-5">
+  <div>
+    <span>Apretá el botón para cambiar la visibilidad del badge </span>
+
+    <!-- https://v18.material.angular.io/components/badge/overview -->
+    <button
+      mat-raised-button
+      [matBadge]="badge()"
+      [matBadgeHidden]="hidden"
+      (click)="toggleBadgeVisibility()"
+    >
+      Esconder
+    </button>
+  </div>
+</div>
+
+<div class="container d-flex justify-content-center mt-5">
+  <app-output-child (sumar)="handleSumar()" (delete)="handleDelete($event)" />
+</div>
