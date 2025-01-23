@@ -8,3 +8,21 @@
   color: white;
   min-height: 100vh;
 }
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+
+  &.text-danger {
+    color: #fb0 !important; /* Active main menu link */
+  }
+}
+
+.dropdown-item {
+  color: white;
+
+  &.bg-primary {
+    background-color: #f90 !important; /* Active submenu background */
+    color: white !important;
+  }
+}

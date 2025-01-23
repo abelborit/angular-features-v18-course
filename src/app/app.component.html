@@ -2,14 +2,16 @@
 <div class="dark-mode">
   <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
+      <!-- Brand -->
       <a
         class="navbar-brand"
-        [class.active]="menuOption === 'home'"
         routerLink="/"
-        (click)="handleSelectMenuOption('home')"
-        >Angular 18</a
+        (click)="handleSelectMenuOption('/')"
       >
+        Angular 18
+      </a>
 
+      <!-- Toggler Button -->
       <button
         class="navbar-toggler"
         type="button"
@@ -22,131 +24,57 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
+      <!-- Menu -->
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <!-- Home -->
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              [class.active]="menuOption === 'home'"
-              aria-current="page"
-              routerLink="/"
-              (click)="handleSelectMenuOption('home')"
-              >Home</a
-            >
-          </li>
-
-          <!-- Signals Dropdown -->
-          <li class="nav-item dropdown">
+          <!-- Generar menú dinámico -->
+          @for (menuRoute of menuRoutes; track menuRoute.label) {
+          <li class="nav-item" [class.dropdown]="menuRoute.children">
+            <!-- Menú con submenús -->
+            @if (menuRoute.children; as menuRouteChildren) {
             <a
               class="nav-link dropdown-toggle"
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
+              [ngClass]="{ 'text-danger': menuOption === menuRoute.path }"
             >
-              Signals
+              {{ menuRoute.label }}
             </a>
 
             <ul class="dropdown-menu">
+              @for (menuRouteChild of menuRouteChildren; track
+              menuRouteChild.label) {
               <li>
                 <a
                   class="dropdown-item"
-                  routerLink="signals/inputs"
-                  (click)="handleSelectMenuOption('signals/inputs')"
+                  routerLink="{{ menuRouteChild.path }}"
+                  [ngClass]="{
+                    'bg-primary': menuOptionChild === menuRouteChild.path
+                  }"
+                  (click)="handleSelectMenuOptionChild(menuRouteChild.path)"
                 >
-                  Inputs
+                  {{ menuRouteChild.label }}
                 </a>
               </li>
-
-              <li>
-                <a
-                  class="dropdown-item"
-                  routerLink="signals/outputs"
-                  (click)="handleSelectMenuOption('signals/outputs')"
-                >
-                  Outputs
-                </a>
-              </li>
-
-              <li>
-                <a
-                  class="dropdown-item"
-                  routerLink="signals/queries"
-                  (click)="handleSelectMenuOption('signals/queries')"
-                >
-                  Queries
-                </a>
-              </li>
-
-              <li>
-                <a
-                  class="dropdown-item"
-                  routerLink="signals/model-inputs"
-                  (click)="handleSelectMenuOption('signals/model-inputs')"
-                >
-                  Model Inputs
-                </a>
-              </li>
+              }
             </ul>
-          </li>
 
-          <li class="nav-item">
+            }
+            <!-- Menú simple -->
+            @else {
             <a
               class="nav-link"
-              [class.active]="menuOption === 'content'"
               aria-current="page"
-              routerLink="content"
-              (click)="handleSelectMenuOption('content')"
+              [ngClass]="{ 'text-danger': menuOption === menuRoute.path }"
+              routerLink="{{ menuRoute.path }}"
+              (click)="handleSelectMenuOption(menuRoute.path)"
             >
-              Content
+              {{ menuRoute.label }}
             </a>
+            }
           </li>
-
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              [class.active]="menuOption === 'optimized-image'"
-              aria-current="page"
-              routerLink="optimized-image"
-              (click)="handleSelectMenuOption('optimized-image')"
-            >
-              Optimized Image
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              [class.active]="menuOption === 'defer'"
-              aria-current="page"
-              routerLink="defer"
-              (click)="handleSelectMenuOption('defer')"
-              >Defer</a
-            >
-          </li>
-
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              [class.active]="menuOption === 'forms'"
-              aria-current="page"
-              routerLink="forms"
-              (click)="handleSelectMenuOption('forms')"
-              >Forms</a
-            >
-          </li>
-
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              [class.active]="menuOption === 'redireccion'"
-              aria-current="page"
-              routerLink="redireccion"
-              (click)="handleSelectMenuOption('redireccion')"
-            >
-              Redirección
-            </a>
-          </li>
+          }
         </ul>
       </div>
     </div>
