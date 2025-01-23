@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-usuarios',
@@ -6,8 +12,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   imports: [],
   templateUrl: './detalle-usuarios.component.html',
   styleUrl: './detalle-usuarios.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DetalleUsuariosComponent {
+  loading: boolean = true;
+  id = signal<number | undefined>(undefined);
 
+  private _route = inject(ActivatedRoute);
+
+  ngOnInit(): void {
+    this._route.params.subscribe((params) => {
+      this.id.set(params['id']);
+    });
+  }
 }

@@ -1,1 +1,14 @@
-<p>redireccion works!</p>
+<div class="container d-flex justify-content-center mt-5">
+  <div>
+    <h1>Redirección</h1>
+    <p>Utiliza los botones para redireccionar a distintos IDs de Usuario</p>
+
+    <button class="m-1" mat-flat-button (click)="navigateTo(1)">user1</button>
+    <button class="m-1" mat-flat-button (click)="navigateTo(2)">user2</button>
+    <button class="m-1" mat-flat-button (click)="navigateTo(3)">
+      user3(deleted)
+    </button>
+    <button class="m-1" mat-flat-button (click)="navigateTo(4)">user4</button>
+    <button class="m-1" mat-flat-button (click)="navigateTo(5)">user5</button>
+  </div>
+</div>

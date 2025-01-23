@@ -50,16 +50,21 @@ export const routes: Routes = [
 
   { path: 'redireccion', component: RedireccionComponent },
   {
+    /* debería ir a "detalle-anterior/:id" porque así se colocó en el método de "navigateTo(.....)" pero es tan rápida la ejecución de código que tiene dentro de las rutas, lo que está en "redirectTo(.....)", que lo redirije a "detalle-usuario/:id" o "not-found" según sea necesario */
     path: 'detalle-anterior/:id',
     redirectTo: ({ params }) => {
       const errorHandler = inject(ErrorHandler);
       const userIdParam = params['id'];
+
       if (userIdParam != 3) {
+        /* lo enviará a la ruta que está puesta abajo con su componente de "DetalleUsuariosComponent" */
         return `/detalle-usuario/${userIdParam}`;
       } else {
         errorHandler.handleError(
           new Error('Attempted navigation to user page without user ID.')
         );
+
+        /* lo enviará a la ruta que está puesta abajo con su componente de "NotFoundComponent" */
         return `/not-found`;
       }
     },
