@@ -10,9 +10,13 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  public menuOption: string = '';
+  public menuOption: string = 'home'; // Default menu option
 
-  handleSelectMenuOption(menuOption: string) {
+  /**
+   * Handles the selection of a menu option and sets it as active.
+   * @param menuOption - The selected menu option.
+   */
+  handleSelectMenuOption(menuOption: string): void {
     this.menuOption = menuOption;
   }
 }

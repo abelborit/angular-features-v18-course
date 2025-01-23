@@ -2,7 +2,13 @@
 <div class="dark-mode">
   <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand">Angular 18</a>
+      <a
+        class="navbar-brand"
+        [class.active]="menuOption === 'home'"
+        routerLink="/"
+        (click)="handleSelectMenuOption('home')"
+        >Angular 18</a
+      >
 
       <button
         class="navbar-toggler"
@@ -18,10 +24,19 @@
 
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
+          <!-- Home -->
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLink="/">Home</a>
+            <a
+              class="nav-link"
+              [class.active]="menuOption === 'home'"
+              aria-current="page"
+              routerLink="/"
+              (click)="handleSelectMenuOption('home')"
+              >Home</a
+            >
           </li>
 
+          <!-- Signals Dropdown -->
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -34,50 +49,103 @@
 
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" routerLink="signals/inputs">Inputs</a>
-              </li>
-              <li>
-                <a class="dropdown-item" routerLink="signals/outputs"
-                  >Outputs</a
+                <a
+                  class="dropdown-item"
+                  routerLink="signals/inputs"
+                  (click)="handleSelectMenuOption('signals/inputs')"
                 >
+                  Inputs
+                </a>
               </li>
+
               <li>
-                <a class="dropdown-item" routerLink="signals/queries"
-                  >Queries</a
+                <a
+                  class="dropdown-item"
+                  routerLink="signals/outputs"
+                  (click)="handleSelectMenuOption('signals/outputs')"
                 >
+                  Outputs
+                </a>
               </li>
+
               <li>
-                <a class="dropdown-item" routerLink="signals/model-inputs"
-                  >Model Inputs</a
+                <a
+                  class="dropdown-item"
+                  routerLink="signals/queries"
+                  (click)="handleSelectMenuOption('signals/queries')"
                 >
+                  Queries
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="dropdown-item"
+                  routerLink="signals/model-inputs"
+                  (click)="handleSelectMenuOption('signals/model-inputs')"
+                >
+                  Model Inputs
+                </a>
               </li>
             </ul>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLink="content"
-              >Content</a
+            <a
+              class="nav-link"
+              [class.active]="menuOption === 'content'"
+              aria-current="page"
+              routerLink="content"
+              (click)="handleSelectMenuOption('content')"
+            >
+              Content
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [class.active]="menuOption === 'optimized-image'"
+              aria-current="page"
+              routerLink="optimized-image"
+              (click)="handleSelectMenuOption('optimized-image')"
+            >
+              Optimized Image
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [class.active]="menuOption === 'defer'"
+              aria-current="page"
+              routerLink="defer"
+              (click)="handleSelectMenuOption('defer')"
+              >Defer</a
             >
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLink="optimized-image"
-              >Optimized Image</a
+            <a
+              class="nav-link"
+              [class.active]="menuOption === 'forms'"
+              aria-current="page"
+              routerLink="forms"
+              (click)="handleSelectMenuOption('forms')"
+              >Forms</a
             >
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLink="defer">Defer</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLink="forms">Forms</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLink="redireccion"
-              >Redirección</a
+            <a
+              class="nav-link"
+              [class.active]="menuOption === 'redireccion'"
+              aria-current="page"
+              routerLink="redireccion"
+              (click)="handleSelectMenuOption('redireccion')"
             >
+              Redirección
+            </a>
           </li>
         </ul>
       </div>
